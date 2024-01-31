@@ -39,15 +39,15 @@ public class App
                {
                 case 1:
                     // TODO: implement binary search tree
-                    System.out.println( "Binary Search Tree" );
+                    System.out.println( "Binary Search Tree has not been implemented" );
                     break;
                 case 2:
                     //  TODO: implement generic queue, stack, and iterator
-                    System.out.println( "Generic Queue, Stack, and Iterator" );
+                    System.out.println( "Generic Queue, Stack, and Iterator has not been implemented" );
                     break;
                 case 3:
                     // TODO: implement linked list queue, stack, and iterator
-                    System.out.println( "Linked List Queue, Stack, and Iterator" );
+                    System.out.println( "Linked List Queue, Stack, and Iterator has not been implemented" );
                     break;
                 case 4:
                     // TODO: opcodes not organizing correctly
@@ -55,7 +55,7 @@ public class App
                     break;
                 case 5:
                     // TODO: implement registrar
-                    System.out.println( "Registrar" );
+                    System.out.println( "Registrar has not been implemented" );
                     break;
                 case 6:
                     // TODO: sudoku generator does not generate correctly
@@ -63,7 +63,7 @@ public class App
                     break;
                 case 7:
                     // TODO: implement two three tree
-                    System.out.println( "Two Three Tree" );
+                    System.out.println( "Two Three Tree has not been implemented" );
                     break;
                 case 8:
                     System.out.println( "Exiting Main Menu..." );
