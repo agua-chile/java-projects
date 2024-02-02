@@ -3,45 +3,31 @@ package Registrar;
 public class RegistrarClass
    {
     // initialize class variables
-
     private final int DEFAULT_CAPACITY = 10;
-      
     private final int NOT_FOUND = -1;
-      
     private StudentClass[] studentArr;
-      
     private int capacity, size;
     
     
     // default constructor
     public RegistrarClass()
-    {
-     // set size to 0
-     size = 0;
-     
-     // set capacity
-     capacity = DEFAULT_CAPACITY;
-     
-     // initialize student array
-     studentArr = new StudentClass[ capacity ];
-    }
+       {
+        this.size = 0;
+        this.capacity = DEFAULT_CAPACITY;
+        this.studentArr = new StudentClass[ capacity ];
+       }
     
     
     /* initialization constructor
      * Parameters: 
      *   initialCapacity - integer value to set class initial capacity
-     */
+    */
     public RegistrarClass( int initialCapacity )
-    {
-     // set size to 0
-     size = 0;
-     
-     // set capacity
-     capacity = initialCapacity;
-     
-     // initialize student array
-     studentArr = new StudentClass[ capacity ];
-    }
+       {
+        this.size = 0;
+        this.capacity = initialCapacity;
+        this.studentArr = new StudentClass[ capacity ];
+       }
     
     
     /* copy constructor 
@@ -49,24 +35,22 @@ public class RegistrarClass
      *   copied - RegistrarClass object to be copied
      */
     public RegistrarClass( RegistrarClass copied )
-    {
-     // initialize variables
-     int index; 
-     
-     // initialize copied variables
-     capacity = copied.capacity;
-     size = copied.size;
-     
-     // initialize student array
-     studentArr = new StudentClass[ capacity ];
-     
-     // set values from student array input to the copied one
-     for( index = 0; index < size; index++ )
-        {
-         // set copied array values to values from array to be copied
-         studentArr[ index ] = copied.studentArr[ index ];
-        }
-    }
+       {
+        // initialize variables
+        int index; 
+
+        // copy over values
+        this.capacity = copied.capacity;
+        this.size = copied.size;
+        this.studentArr = new StudentClass[ capacity ];
+        
+        // set values from student array input to the copied one
+        for( index = 0; index < size; index++ )
+           {
+            // set copied array values to values from array to be copied
+            studentArr[ index ] = copied.studentArr[ index ];
+           }
+       }
     
     
     /* addStudent( class )
@@ -80,24 +64,18 @@ public class RegistrarClass
      *   Overloaded method
      */
     public boolean addStudent( StudentClass newStudent )
-    {
-     // test if it will be successful
-     if( size < capacity )
-        {
-         // add student
-         studentArr[ size ] = newStudent;
-         
-         // increment size
-         size++;
-     
-         // return success
-         return true;
-        }
-     // end test
-     
-     // return failure
-     return false;
-    }
+       {
+        // test if it will be successful
+        if( size < capacity )
+           {
+            // add student; increment size; return success
+            studentArr[ size ] = newStudent;
+            size++;
+            return true;
+           }
+        // return failure
+        return false;
+       }
     
     /* addStudent( data ) 
      * Description:

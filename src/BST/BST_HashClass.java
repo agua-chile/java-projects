@@ -57,8 +57,7 @@ public class BST_HashClass
                          double inGPA )
        {
         // initialize variables
-        StudentClassNode newStudent = new StudentClassNode( inName, inStudentID, 
-                                                            inGender, inGPA ); 
+        StudentClassNode newStudent = new StudentClassNode( inName, inStudentID, inGender, inGPA ); 
         int hash = generateHash( newStudent ), hashIndex = hash % tableSize;;
         
         // if the hash index is an empty bin
@@ -69,7 +68,7 @@ public class BST_HashClass
            }
         
         // add item
-        tableArray[ hashIndex ].insert( newStudent );
+        tableArray[ hashIndex ].insert​( newStudent );
        }
     
     /* clearHashTable
@@ -105,7 +104,7 @@ public class BST_HashClass
         int hash = generateHash( tempStudent ), hashIndex = hash % tableSize;;
         
         // return if or if not found
-        return tableArray[ hashIndex ].search( tempStudent );
+        return tableArray[ hashIndex ].search​( tempStudent );
        }
     
     /* generateHash

@@ -365,7 +365,6 @@ public class BST_Class
         return null;
        }
     
-    
     /* removeNode   
      * Description:
      *   Removes data node from tree using student ID key
@@ -378,7 +377,7 @@ public class BST_Class
      * Returns:
      *   @return StudentClassNode result of remove action
      */
-    public StudentClassNode removeNode​( StudentClassNode inData )
+    public StudentClassNode removeNode( StudentClassNode inData )
        {
          // check for BST_Root not null and if it is even there
         if( !isEmpty() && search​( inData ) == inData )
@@ -471,7 +470,7 @@ public class BST_Class
      * Returns:
      *   @return StudentClassNode reference to found data
      */
-    private StudentClassNode search​( StudentClassNode searchData )
+    public StudentClassNode search​( StudentClassNode searchData )
        {
         // return search
         return searchHelper​( BST_Root, searchData );
@@ -517,5 +516,5 @@ public class BST_Class
            }
         // return not found
         return null;
-       } 
+       }
    }

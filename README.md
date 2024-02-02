@@ -19,3 +19,11 @@ to your computer. You can do this by running the following
 command in your terminal:
 
 ```git clone```
+
+### Acknowledgments
+
+I would like to thank my professor, Dr. Michael Levering, for
+teaching me Java and helping me to understand the language.
+All of the projects in this repository were completed as
+part of his class and a lot of supporting classes are based
+off of his work.

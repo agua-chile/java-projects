@@ -9,7 +9,7 @@ import java.util.Scanner;
 // main class
 public class App 
    {
-    public static void main(String[] args) throws Exception 
+    public static void main( String[] args ) throws Exception 
        {
         // display program
         System.out.println( "=======================================" );
@@ -63,6 +63,7 @@ public class App
                     break;
                 case 7:
                     // TODO: implement two three tree
+                    // TODO: needs major work, reference original node class
                     System.out.println( "Two Three Tree has not been implemented" );
                     break;
                 case 8:
