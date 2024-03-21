@@ -126,7 +126,7 @@ public class OpCodeClass implements Comparable<OpCodeClass>
         
         if( difference != 0 )
            {
-            return -1;
+            return difference;
            }
         
         return this.queueEntryValue - other.queueEntryValue;
