@@ -1,63 +1,206 @@
 package OpCode;
 
-// OpCodeClass is a basic class that holds an integer value.
-public class OpCodeClass 
+
+/**
+ * Individual process action called op code is used
+ * for queueing in an operating system to decide which
+ * running action must be implemented next
+ * <p>
+ * op code has priority but it can also be given a
+ * "queue entry" value meaning a numerical value related
+ * to when the op code entered a queue; op codes with equal priority
+ * will be removed by their entry value - lowest to highest
+ *  
+ * @author MichaelL
+ *
+ */
+public class OpCodeClass implements Comparable<OpCodeClass>
    {
-    // class variable
-    private int value;
-
-
-    // default constructor
-    public OpCodeClass() 
+    /**
+     * constant minimum priority value for generating op code priority
+     */
+    private final int MIN_PRIORITY_VAL = 100;
+    
+    /**
+     * constant maximum priority value for generating op code priority
+     */
+    private final int MAX_PRIORITY_VAL = 999;
+    
+    /**
+     * constant minimum number of cycles for generating op code
+     * number of cycles
+     */
+    private final int MIN_NUM_CYCLES = 10;
+    
+    /**
+     * constant maximum number of cycles for generating op code
+     * number of cycles
+     */
+    private final int MAX_NUM_CYCLES = 99;
+    
+    /**
+     * member holding priority of this op code
+     */
+    private int priority;
+    
+    /**
+     * member holding number of cycles for this op code
+     */
+    private int numCycles;
+    
+    /**
+     * member holding queue entry value which is set
+     * as the op code is placed in the heap
+     */
+    private int queueEntryValue;
+    
+    /**
+     * Default constructor
+     */
+    public OpCodeClass()
        {
-        this.value = 0;
+        priority = 0;
+        
+        numCycles = 0;
+        
+        queueEntryValue = 0;
        }
-
-    // constructor
-    public OpCodeClass( int value ) 
+    
+    /**
+     * Initialization constructor
+     * 
+     * @param priorityIn integer holding op code priority
+     * 
+     * @param numCyclesIn integer holding op code number of cycles
+     * 
+     * @param queueEntryIn integer holding queue entry value
+     */
+    public OpCodeClass( int priorityIn, int numCyclesIn, int queueEntryIn )
        {
-        this.value = value;
+        priority = priorityIn;
+        
+        numCycles = numCyclesIn;
+        
+        queueEntryValue = queueEntryIn;
        }
-
-    // copy constructor
-    public OpCodeClass( OpCodeClass other ) 
+   
+    /**
+     * Copy constructor
+     * 
+     * @param copied OpCodeClass object to be copied
+     */
+    public OpCodeClass( OpCodeClass copied )
        {
-        this.value = other.value;
+        priority = copied.priority;
+        
+        numCycles = copied.numCycles;
+        
+        queueEntryValue = copied.queueEntryValue;
        }
-
-
-    // getter
-    public int getValue() 
+   
+    /**
+     * Generation constructor - randomly generates op code and number of cycles
+     * 
+     * @param queueEntryIn integer holding queue entry value
+     * provided to op code as it is enqueued
+     */
+    public OpCodeClass( int queueEntryIn )
        {
-        return value;
+        priority = getRandBetween( MIN_PRIORITY_VAL, MAX_PRIORITY_VAL );
+        
+        numCycles = getRandBetween( MIN_NUM_CYCLES, MAX_NUM_CYCLES );
+        
+        queueEntryValue = queueEntryIn;
        }
-
-    // setter
-    public void setValue( int value ) 
+    
+    /**
+     * Comparison method required of Comparable interface
+     * <p>
+     * First compares priorities but if they are the same,
+     * then compares enqueue value to see which one came
+     * into the queue first
+     */
+    public int compareTo( OpCodeClass other )
        {
-        this.value = value;
-       }
-
-    // compare to another OpCodeClass object
-    public int compareTo( OpCodeClass other ) 
-       {
-        if( this.value == other.value ) 
-           {
-            return 0;
-           }
-        else if( this.value < other.value ) 
+        int difference = this.priority - other.priority;
+        
+        if( difference != 0 )
            {
             return -1;
            }
-        else 
-           {
-            return 1;
-           }
+        
+        return this.queueEntryValue - other.queueEntryValue;
        }
-
-    // to string
-    public String toString() 
+    
+    /**
+     * Gets number of op code cycles
+     * 
+     * @return integer number of cycles in this op code
+     */
+    public int getNumCycles()
        {
-        return "" + value;
+        return numCycles;
        }
+    
+    /**
+     * Gets op code priority value
+     * 
+     * @return integer priority value
+     */
+    public int getPriorityValue()
+       {
+        return priority;
+       }
+    
+    /**
+     * Random generation of values between two numbers, inclusive
+     * 
+     * @param lowInclusive lowest value of result
+     * 
+     * @param highInclusive highest value of result
+     * 
+     * @return randomly generated value between the two given values, inclusive
+     */
+    private int getRandBetween( int lowInclusive, int highInclusive )
+       {
+        int value, range = highInclusive - lowInclusive + 1;
+          
+        value = (int)( Math.random() * range );
+          
+        return lowInclusive + value;
+       }
+    
+    /**
+     * Sets queue entry value
+     * 
+     * @param entryVal integer value holding entry value
+     */
+    public void setQueueEntryValue( int entryVal )
+       {
+        queueEntryValue = entryVal;
+       }
+    
+    /**
+     * Gets the complete op code as a text quantity
+     * 
+     * @return String value holding op code in the form
+     * "P(RunNN)PPP;" where NN is the number of cycles
+     * and PPP is the priority value
+     */
+    @Override
+    public String toString()
+       {
+        String outString = "P(Run" + numCycles + ")" + priority;
+        
+        if( queueEntryValue > 0 )
+           {
+            outString += "/" + queueEntryValue;
+           }
+        
+        outString += ";";
+        
+        return outString;
+       }
+    
+
    }
